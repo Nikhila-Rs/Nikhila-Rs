@@ -1,8 +1,8 @@
 - 👋 Hi, I’m @Nikhila-RS
 - 👀 I’m interested in exploring new things.
-- 🌱 I’m currently learning Japanese 
-- 📫 Learnt some basics in webdevelopment
-- 😄 consistiently participating in various competions
+- 🌱 I’m currently learning web development.
+- 📫 Just completed a mini project in web development.
+- 😄 consistiently participating in various competions.
 
 
 <!---
