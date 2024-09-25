@@ -1,0 +1,72 @@
+<div>
+    <div class="container-fluid">
+         <div class="navbar-header">
+          <a class="navbar-brand" href="https://www.coursera.org/learn/frontend-development-for-java-full-stack/">course-Page</a>
+        </div>
+        <ol class="nav navbar-nav">
+          <li><a href="home1.html">Home</a></li>
+          <li><a href="https://www.coursera.org/learn">Other courses in cousera </a></li>
+         </ol>
+     </div>
+  </nav> 
+ <div class="content">
+      <h1>Testing responsivity</h1>
+
+   <img src="1.jpg" width="45%"  />
+   <img src="2.jpg" width="25%" />
+   <img src="3.jpg" width="25%" />
+   <br/>
+   <p> This is my first ever web application using angular. </p>
+</div>
+</div>
+<style>
+  .content{
+    height:350px;
+    width:1000px;
+    font size:20px;
+    margin-left:auto;
+    margin-right:auto; 
+   list-style-type:none;
+   background-color:pink;
+}
+h1{
+  margin-bottom:10px;
+  color:blue;
+}
+
+img{
+  margin-bottom:4px;
+}
+
+body{ 
+  padding-top: 18rem;
+  height:250px;
+  width:1000px;
+  margin-left:auto;
+  margin-right:auto;
+  text-decoration:inline;
+  background: linear-gradient(to bottom,aqua,pink);
+}
+.p{
+  height:250px;
+  width:1000px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size:20px;
+  color:blue;
+
+}
+</style>
+
+<script>
+  var all_classes = ['col-md-1', 'col-md-2', 'col-md-3']; 
+var index = 0;
+$('#botao').click( function(){
+  var previous_index = index - 1;
+  if(previous_index < 0 ){ previous_index = 0; }
+  $('.content').removeClass(all_classes[previous_index]);
+  $('.content').addClass(all_classes[index]);
+  ++index;
+  if(index > all_classes.length){ index = 0; }
+});
+</script>
