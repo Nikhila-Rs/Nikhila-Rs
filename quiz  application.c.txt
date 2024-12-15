@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_QUESTIONS 5
+
+typedef struct {
+    char question[256];
+    char options[4][100];
+    char answer[100];
+} QuizQuestion;
+
+void displayQuiz(QuizQuestion quiz[], int numQuestions) {
+    for (int i = 0; i < numQuestions; i++) {
+        printf("%s\n", quiz[i].question);
+        for (int j = 0; j < 4; j++) {
+            printf("%d. %s\n", j + 1, quiz[i].options[j]);
+        }
+        printf("Your answer: ");
+    }
+}
+
+int calculateScore(QuizQuestion quiz[], int numQuestions) {
+    int score = 0;
+    char userAnswer[100];
+
+    for (int i = 0; i < numQuestions; i++) {
+        printf("Your answer for question %d: ", i + 1);
+        scanf("%s", userAnswer);
+        if (strcmp(userAnswer, quiz[i].answer) == 0) {
+            score++;
+        }
+    }
+    return score;
+}
+
+int main() {
+    QuizQuestion quiz[MAX_QUESTIONS] = {
+        {
+            "What is the capital of France?",
+            {"Berlin", "Madrid", "Paris", "Lisbon"},
+            "Paris"
+        },
+        {
+            "Which planet is known as the Red Planet?",
+            {"Earth", "Mars", "Jupiter", "Saturn"},
+            "Mars"
+        },
+        {
+            "Who wrote 'To Kill a Mockingbird'?",
+            {"Harper Lee", "Mark Twain", "F. Scott Fitzgerald", "Ernest Hemingway"},
+            "Harper Lee"
+        },
+        {
+            "What is the largest ocean on Earth?",
+            {"Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"},
+            "Pacific Ocean"
+        },
+        {
+            "What is the chemical symbol for water?",
+            {"H2O", "O2", "CO2", "NaCl"},
+            "H2O"
+        }
+    };
+
+    printf("Welcome to the Simple Quiz Application!\n");
+    displayQuiz(quiz, MAX_QUESTIONS);
+    
+    int score = calculateScore(quiz, MAX_QUESTIONS);
+    printf("You scored %d out of %d\n", score, MAX_QUESTIONS);
+
+    return 0;
+}
