@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Nikhila-RS
 - 👀 I’m interested in exploring new things.
-- 🌱 I’m currently learning web development.
-- 📫 Just completed a mini project in web development.
+- 🌱 I’m currently learning web development,python.
+- 📫 Just completed a mini project in web development,python.
 - 😄 consistiently participating in various competions.
 
 
