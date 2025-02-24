@@ -1,0 +1,78 @@
+import pygame
+import random
+
+pygame.init()
+
+WIDTH, HEIGHT = 500, 600
+COLORS = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0)]  # Red, Green, Blue, Yellow
+WHITE = (255, 255, 255)
+PLAYER_SIZE = 50
+SPEED = 5
+FONT = pygame.font.Font(None, 36)
+
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Color Swap Reflex")
+player = pygame.Rect(WIDTH//2 - PLAYER_SIZE//2, HEIGHT - 100, PLAYER_SIZE, PLAYER_SIZE)
+player_color = random.choice(COLORS)
+
+obstacles = []
+def create_obstacle():
+    x = random.randint(50, WIDTH - 50)
+    color = random.choice(COLORS)
+    return pygame.Rect(x, -50, 50, 50), color
+
+def draw_text(text, x, y):
+    text_surface = FONT.render(text, True, (0, 0, 0))
+    screen.blit(text_surface, (x, y))
+
+clock = pygame.time.Clock()
+running = True
+score = 0
+spawn_timer = 0
+
+while running:
+    screen.fill(WHITE)
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1:
+                player_color = COLORS[0]
+            elif event.key == pygame.K_2:
+                player_color = COLORS[1]
+            elif event.key == pygame.K_3:
+                player_color = COLORS[2]
+            elif event.key == pygame.K_4:
+                player_color = COLORS[3]
+    
+    
+    spawn_timer += 1
+    if spawn_timer > 50:
+        obstacles.append(create_obstacle())
+        spawn_timer = 0
+    
+    
+    for obstacle in obstacles[:]:
+        obstacle[0].y += SPEED
+        if obstacle[0].y > HEIGHT:
+            obstacles.remove(obstacle)
+        if obstacle[0].colliderect(player) and obstacle[1] == player_color:
+            score += 1
+            obstacles.remove(obstacle)
+        elif obstacle[0].colliderect(player):
+            running = False  # Game over if colors don't match
+    
+    
+    pygame.draw.rect(screen, player_color, player)
+    for obstacle in obstacles:
+        pygame.draw.rect(screen, obstacle[1], obstacle[0])
+    
+    draw_text(f"Score: {score}", 10, 10)
+    draw_text("Press 1-4 to change color", 10, 40)
+    
+    pygame.display.flip()
+    clock.tick(30)
+
+pygame.quit()
