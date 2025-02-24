@@ -1,0 +1,64 @@
+import random
+import time
+
+class Game:
+    def __init__(self):
+        self.locations = ["Beach", "Jungle", "Cave", "Waterfall", "Mountain"]
+        self.items = ["Map", "Compass", "Treasure Key", "Old Coin"]
+        self.treasure_location = random.choice(self.locations)
+        self.inventory = []
+        self.time_left = 10  # 10 turns to find the treasure
+
+    def start_game(self):
+        print("Welcome to Mystery Island Adventure!")
+        print("You have 10 turns to find the hidden treasure.")
+        print("Explore different locations and collect items.")
+        print("Good luck!\n")
+        
+        while self.time_left > 0:
+            self.explore()
+            self.time_left -= 1
+            if self.treasure_location in self.inventory:
+                print("Congratulations! You've found the treasure!")
+                break
+            if self.time_left == 0:
+                print("Time's up! You couldn't find the treasure.")
+                break
+
+    def explore(self):
+        print(f"Time left: {self.time_left} turns")
+        print("Choose a location to explore:")
+        for i, location in enumerate(self.locations):
+            print(f"{i + 1}. {location}")
+        
+        choice = int(input("Enter the number of your choice: ")) - 1
+        
+        if 0 <= choice < len(self.locations):
+            location = self.locations[choice]
+            print(f"\nYou explore the {location}.")
+            self.random_event(location)
+        else:
+            print("Invalid choice. Please try again.")
+
+    def random_event(self, location):
+        event = random.choice(["find_item", "nothing", "encounter_enemy"])
+        
+        if event == "find_item":
+            item = random.choice(self.items)
+            self.inventory.append(item)
+            print(f"You found a {item}!")
+        elif event == "nothing":
+            print("You found nothing of interest.")
+        elif event == "encounter_enemy":
+            print("Oh no! You encountered a wild animal! You need to escape!")
+            escape_success = random.choice([True, False])
+            if escape_success:
+                print("You successfully escaped!")
+            else:
+                print("You couldn't escape and lost a turn!")
+
+        print(f"Your inventory: {self.inventory}\n")
+
+if __name__ == "__main__":
+    game = Game()
+    game.start_game()
