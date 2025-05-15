@@ -1,0 +1,62 @@
+Gryffindor = 0
+Hufflepuff = 0
+Ravenclaw = 0
+Slytherin = 0
+
+q1 = int(input('Do you like dawn or dusk? (1 or 2):'))
+if q1 == 1:
+  Gryffindor += 1
+  Ravenclaw += 1
+  print('Gryffindor and Ravenclaw',)
+elif q1 == 2:
+  Hufflepuff += 1
+  Slytherin  += 1
+  print('Hufflepuff and Slytherin ')
+else:
+  print('wrong input')
+q2 = int(input('When I’m dead, I want people to remember me as:(1-4)'))
+if q2 == 1:
+  Hufflepuff += 2
+  print('Hufflepuff')
+elif q2 == 2:
+  Slytherin += 2
+  print('Slytherin')
+elif q2 == 3:
+  Ravenclaw += 2
+  print('Ravenclaw')
+elif q2 == 4:
+  Gryffindor += 2
+  print('Gryffindor')
+else: 
+  print('wrong input')
+q3 = int(input('Which kind of instrument most pleases your ear?:(1-4)'))
+if q3 == 1:
+  Slytherin += 4
+  print('Slytherin')
+elif q3 == 2:
+  Hufflepuff += 4
+  print(' Hufflepuff')
+elif q3 == 3:
+  Ravenclaw += 4
+  print('Ravenclaw')
+elif q3 == 4:
+  Gryffindor += 4
+  print('Gryffindor')
+else:
+  print('wrong input')
+
+print("Gryffindor: ", Gryffindor)
+print("Ravenclaw: ", Ravenclaw)
+print("Hufflepuff: ", Hufflepuff)
+print("Slytherin: ", Slytherin)
+
+most_points = max(Gryffindor, Ravenclaw, Hufflepuff,Slytherin) 
+print("Your group is:")
+if Gryffindor == most_points:
+  print('Gryffindor!🦁')
+elif Ravenclaw == most_points:
+  print('Ravenclaw!🦅')
+elif Hufflepuff == most_points:
+  print('Hufflepuff!🦡')
+else:
+  print('Slytherin!🐍 ')
